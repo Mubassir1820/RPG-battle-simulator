@@ -1,0 +1,51 @@
+from abc import ABC
+from config.stats import CHARACTER_STATS
+
+class Character(ABC):
+    def __init__(self, hero,max_health,current_health,attack,defense,max_mana,current_mana):
+        self.hero_type = hero
+        self.max_health = max_health
+        self.current_health = current_health
+        self.attack = attack
+        self.defense = defense
+        self.max_mana = max_mana
+        self.current_mana = current_mana
+    
+class Warrior(Character):
+    def __init__(self):
+        stats = CHARACTER_STATS['Warrior']
+        super().__init__(
+            hero="warrior",
+            max_health=stats["health"],
+            current_health=stats["health"],
+            attack=stats["attack"],
+            defense=stats["defense"],
+            max_mana=stats["mana"],
+            current_mana=stats["mana"])
+
+class Mage(Character):
+    def __init__(self):
+        stats = CHARACTER_STATS["Mage"]
+        super().__init__(
+            hero="Mage",
+            max_health=stats["health"],
+            current_health=stats["health"],
+            attack=stats["attack"],
+            defense=stats["defense"],
+            max_mana=stats["mana"],
+            current_mana=stats["mana"])
+
+class Archer(Character):
+    def __init__(self):
+        stats = CHARACTER_STATS["Archer"]
+        super().__init__(
+            hero="Archer",
+            max_health=stats["health"],
+            current_health=stats["health"],
+            attack=stats["attack"],
+            defense=stats["defense"],
+            max_mana=stats["mana"],
+            current_mana=stats["mana"])
+
+hero_warrior = Archer()
+print(hero_warrior.__dict__)
