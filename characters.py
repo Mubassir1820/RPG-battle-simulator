@@ -10,6 +10,21 @@ class Character(ABC):
         self.defense = defense
         self.max_mana = max_mana
         self.current_mana = current_mana
+
+    def attack_enemy(self,target):
+        damage = max(1,self.attack - target.defense)
+        return damage
+
+    def take_damage(self,damage):
+        rem_health = self.current_health - damage
+        self.current_health = max(0,rem_health)
+        return self.current_health
+    
+    def is_alive(self):
+        if self.current_health <= 0:
+            return False
+        return True
+
     
 class Warrior(Character):
     def __init__(self):
@@ -47,5 +62,20 @@ class Archer(Character):
             max_mana=stats["mana"],
             current_mana=stats["mana"])
 
-hero_warrior = Archer()
-print(hero_warrior.__dict__)
+warrior1 = Warrior()
+mage1 = Mage()
+
+damage = warrior1.attack_enemy(mage1)
+print(warrior1.attack_enemy(mage1))
+print(mage1.take_damage(damage))
+print(mage1.is_alive())
+print(warrior1.attack_enemy(mage1))
+print(mage1.is_alive())
+print(warrior1.attack_enemy(mage1))
+print(mage1.is_alive())
+print(warrior1.attack_enemy(mage1))
+print(mage1.is_alive())
+print(warrior1.attack_enemy(mage1))
+print(mage1.is_alive())
+print(warrior1.attack_enemy(mage1))
+print(mage1.is_alive())
