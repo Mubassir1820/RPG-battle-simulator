@@ -11,14 +11,17 @@ class Character(ABC):
         self.max_mana = max_mana
         self.current_mana = current_mana
 
+    def __str__(self):
+        return self.hero_type
+
     def attack_enemy(self,target):
         damage = max(1,self.attack - target.defense)
+        target.take_damage(damage)
         return damage
 
     def take_damage(self,damage):
         rem_health = self.current_health - damage
         self.current_health = max(0,rem_health)
-        return self.current_health
     
     def is_alive(self):
         if self.current_health <= 0:
@@ -65,17 +68,19 @@ class Archer(Character):
 warrior1 = Warrior()
 mage1 = Mage()
 
-damage = warrior1.attack_enemy(mage1)
-print(warrior1.attack_enemy(mage1))
-print(mage1.take_damage(damage))
-print(mage1.is_alive())
-print(warrior1.attack_enemy(mage1))
-print(mage1.is_alive())
-print(warrior1.attack_enemy(mage1))
-print(mage1.is_alive())
-print(warrior1.attack_enemy(mage1))
-print(mage1.is_alive())
-print(warrior1.attack_enemy(mage1))
-print(mage1.is_alive())
-print(warrior1.attack_enemy(mage1))
-print(mage1.is_alive())
+# print(mage1.current_health)
+# damage = warrior1.attack_enemy(mage1)
+# print(mage1.current_health)
+# print(warrior1.attack_enemy(mage1))
+# print(mage1.take_damage(damage))
+# print(mage1.is_alive())
+# print(warrior1.attack_enemy(mage1))
+# print(mage1.is_alive())
+# print(warrior1.attack_enemy(mage1))
+# print(mage1.is_alive())
+# print(warrior1.attack_enemy(mage1))
+# print(mage1.is_alive())
+# print(warrior1.attack_enemy(mage1))
+# print(mage1.is_alive())
+# print(warrior1.attack_enemy(mage1))
+# print(mage1.is_alive())
